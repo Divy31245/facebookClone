@@ -5,6 +5,7 @@ module.exports = {
       "platform-lookaside.fbsbx.com",
       "firebasestorage.googleapis.com",
       "scontent.famd6-1.fna.fbcdn.net",
+      "www.seekpng.com",
     ],
   },
 };

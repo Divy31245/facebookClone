@@ -9,14 +9,14 @@ export default function Home() {
   const { data: session } = useSession();
   if (!session) return <Login />;
   return (
-    <div>
+    <div className="h-screen bg-gray-100 overflow-hidden">
       <Head>
         <title>fbclone</title>
       </Head>
       {/* header */}
       <Header />
 
-      <main>
+      <main className="flex">
         {/* Sidebar */}
         <Sidebar />
         {/* feed */}
