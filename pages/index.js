@@ -1,10 +1,10 @@
 import Head from "next/head";
-import Login from "../components/login";
-import Header from "../components/header";
+import Login from "../components/Login";
+import Header from "../components/Header";
 import { useSession } from "next-auth/react";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/Sidebar";
 import Feed from "../components/Feed";
-import Widgets from "../components/widgets";
+import Widgets from "../components/Widgets";
 
 export default function Home() {
   const { data: session } = useSession();
