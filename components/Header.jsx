@@ -15,7 +15,7 @@ import {
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
 
-import HeaderIcon from "./header-icon";
+import HeaderIcon from "./Header-icon";
 
 function Header() {
   const { data: session } = useSession();
