@@ -4,7 +4,8 @@ import Header from "../components/header";
 import { useSession } from "next-auth/react";
 import Sidebar from "../components/sidebar";
 import Feed from "../components/Feed";
-
+import Widgets from "../components/widgets";
+import { db } from "../firebase";
 export default function Home() {
   const { data: session } = useSession();
   if (!session) return <Login />;
@@ -16,19 +17,35 @@ export default function Home() {
       {/* header */}
       <Header />
 
-      <main className="flex">
+      <div className="flex justify-between">
         {/* Sidebar */}
         <Sidebar />
         {/* feed */}
         <Feed />
+        <Widgets />
         {/* widgets */}
-      </main>
+      </div>
     </div>
   );
 }
 
-  /* this below code was in the previous version of the next auth  */
+export async function getServerSideProps() {
+  const posts = await db.collection("posts").orderBy("createdAt", "desc").get();
 
+  const docs = posts.docs.map((post) => ({
+    id: post.id,
+    ...post.data(),
+    createdAt: null,
+  }));
+
+  return {
+    props: {
+      posts: docs,
+    },
+  };
+}
+
+/* this below code was in the previous version of the next auth  */
 
 // and now this whole code is replaced by just one hook useSession and made our life so much easier:))))
 // export async function getServerSideProps(context){
