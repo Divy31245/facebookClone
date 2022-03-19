@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import Sidebar from "../components/sidebar";
 import Feed from "../components/Feed";
 import Widgets from "../components/widgets";
-import { db } from "../firebase";
+
 export default function Home() {
   const { data: session } = useSession();
   if (!session) return <Login />;
@@ -29,21 +29,21 @@ export default function Home() {
   );
 }
 
-export async function getServerSideProps() {
-  const posts = await db.collection("posts").orderBy("createdAt", "desc").get();
+// export async function getServerSideProps() {
+//   const posts = await db.collection("posts").orderBy("createdAt", "desc").get();
 
-  const docs = posts.docs.map((post) => ({
-    id: post.id,
-    ...post.data(),
-    createdAt: null,
-  }));
+//   const docs = posts.docs.map((post) => ({
+//     id: post.id,
+//     ...post.data(),
+//     createdAt: null,
+//   }));
 
-  return {
-    props: {
-      posts: docs,
-    },
-  };
-}
+//   return {
+//     props: {
+//       posts: docs,
+//     },
+//   };
+// }
 
 /* this below code was in the previous version of the next auth  */
 
