@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { CameraIcon, VideoCameraIcon } from "@heroicons/react/solid";
 import { db, storage } from "../firebase";
 
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import firebase from "firebase";
 
 function InputBox() {
